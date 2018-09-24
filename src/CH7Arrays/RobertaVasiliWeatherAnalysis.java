@@ -6,7 +6,7 @@ package CH7Arrays;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class WeatherAnalysis {
+public class RobertaVasiliWeatherAnalysis {
 
     // class members that can be accessed from all methods of this class
     private static int NumberOfDays = 0;    // number of days
