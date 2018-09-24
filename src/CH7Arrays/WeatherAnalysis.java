@@ -1,46 +1,78 @@
-//This program takes user input and calculates the avg. temp
-//for n days. The program also identifies how many days are above
-//avg.
+// This program takes user input and calculates the avg. temp for n days.
+// The program also identifies how many days are above avg.
+
 package CH7Arrays;
 
-        import java.util.Arrays;
-        import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class WeatherAnalysis {
+
+    // class members that can be accessed from all methods of this class
+    private static int NumberOfDays = 0;    // number of days
+    private static int Sum = 0;             // sum of all temps
+    private static double RoundAvg = 0;     // average of temps
+    private static int DaysOverAverage = 0; // number of days over average
+
     public static void main(String[] args) {
-        //Step1: Ask the user how many days of temperature they want to put
+
         Scanner console = new Scanner(System.in);
-        System.out.print("How many days' temperatures? ");
-        int days = console.nextInt();
-        calc(days, console);
-        //Step6: Compare the average with the values in the array
-        //Step7: Print output (there are x days above the average)
+
+        // 1. get user input
+        int[] arrTemps = getData (console);
+
+        // 2. calculate
+        calc (arrTemps);
+
+        // 3. show results
+        show ();
+
     }
 
-    public static void calc (int days, Scanner console) {
-        //Step2: Create an array and make it the size of the number of days the
-        //user wants to put
-        int sum = 0;
+    // get user input and return the array with data
+    public static int[] getData (Scanner console) {
+
+        // temporary input data holders
         int data = 0;
-        int[] temps = new int[days];
-        //Step3: Read in the user input for the array (for loops)
-        for(int i = 0; i < days; i++) {
-            //Step4: Sum the values within the array (inside for loop) (cumulative sum)
+
+        // ask user for numberOfDays and store it
+        System.out.print("How many days' temperatures? ");
+        NumberOfDays = console.nextInt();
+
+        // create the array to store temps from user input
+        int[] temps = new int[NumberOfDays];
+
+        // loop to get user input for temps for NumberOfDays
+        for(int i = 0; i < NumberOfDays; i++) {
             System.out.print("Day " + (i + 1) + "'s high temp: ");
-            data = console.nextInt();
-            temps[i] = data;
-            sum += data;
+            data = console.nextInt();  // user input
+            temps[i] = data;           // store in array
+            Sum += data;               // store cumulative sum
         }
 
-        avg(days, sum);
+        // return temps array from which we'll caclulate
+        return temps;
     }
 
-    public static void avg(int days, int sum) {
-        //Step5: Take the average
-         double average = 0;
-         double roundAvg = 0;
-         average = (double)sum/days;
-         roundAvg = (Math.round(average * 10.0)) / 10.0;
-         System.out.println("Average temp = "  + roundAvg);
+    // calculate from data in the array
+    public static void calc (int[] temps) {
+
+        // calc the average
+        double average = (double) Sum / NumberOfDays;
+        RoundAvg = (Math.round(average * 10.0)) / 10.0;
+
+        // loop to calculate days over avg
+        for(int i = 0; i < NumberOfDays; i++) {
+            if(temps[i] > RoundAvg) {
+                ++DaysOverAverage;
+            }
+        }
     }
+
+    // show results on console
+    public static void show () {
+        System.out.println("Average temp = " + RoundAvg);
+        System.out.println(DaysOverAverage + " days were above average.");
+    }
+
 }
