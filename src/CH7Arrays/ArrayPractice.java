@@ -26,9 +26,9 @@ public class ArrayPractice {
     }
 
     public static void randomArray() {
-        int [] random = new int[(int) (Math.random() * 10)];
+        int [] random = new int[(int) (Math.random() * 10 + 1)];
         for(int i = 0; i < Array.getLength(random); i++) {
-            random[i] = (int) (Math.random() * 10);
+            random[i] = (int) (Math.random() * 10 + 1);
         }
         System.out.println(Arrays.toString(random));
     }
