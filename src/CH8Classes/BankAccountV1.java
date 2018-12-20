@@ -1,17 +1,19 @@
 package CH8Classes;
 
+import com.sun.jndi.cosnaming.IiopUrl;
+
 public class BankAccountV1 {
     //state fields below
     private double balance;
     private int pin;
     private String name;
     private String ssn;
-    private String address;
-    private String dob;
+    private Address address;
+    private Dob dob;
 
 
     //behaviors below
-    public BankAccountV1(String name, String ssn, String address, String dob) {
+    public BankAccountV1(String name, String ssn, Address address, Dob dob) {
         this.name = name;
         this.ssn = ssn;
         this.address = address;
@@ -19,7 +21,7 @@ public class BankAccountV1 {
 
     }
 
-    public BankAccountV1(String name, String ssn, String address, String dob,
+    public BankAccountV1(String name, String ssn, Address address, Dob dob,
                          double balance, int pin) {
         this.name = name;
         this.ssn = ssn;
@@ -38,11 +40,11 @@ public class BankAccountV1 {
         return ssn;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public String getDob() {
+    public Dob getDob() {
         return dob;
     }
 
@@ -63,9 +65,10 @@ public class BankAccountV1 {
         balance -= amount;
     }
 
-    //print the object
+    //print the object by overriding the object's built in
+    //toString() method
     public String toString() {
-
+        return "Name: " + name + "\nBalance: " + balance;
     }
 
 
