@@ -17,7 +17,7 @@ public class GroceryListV1 {
 
     //behaviors
     public void addItem(GroceryItemOrderV1 itemOrderV1) {
-        list[numItems] = item;
+
         numItems++;
     }
 
