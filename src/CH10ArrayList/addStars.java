@@ -15,7 +15,7 @@ public class addStars {
     }
 
     public static void addStars(ArrayList<String> list) {
-        for(int i = 1; i <= list.size(); i+=2) {
+        for(int i = 1; i <=  list.size(); i+=2) {
             list.add(i, "*");
         }
     }
