@@ -1,0 +1,65 @@
+public class Cuboid extends Shape3D {
+
+    private double length;
+    private double height;
+    private double width;
+
+    public Cuboid(double length, double width, double height) {
+        this.length = length;
+        this.height = height;
+        this.width = width;
+    }
+
+    public double getArea(){
+        return (length * width * 2) + (height * length * 2) + (height * width * 2);
+    }
+
+    public double getVolume(){
+        return length * width * height;
+    }
+}
+
+public class SquarePyramid extends Shape3D  {
+
+    private double length;
+    private double height;
+    private double width;
+
+    public SquarePyramid(double width, double height) {
+        this.length = width;
+        this.height = height;
+        this.width = width;
+    }
+
+    public double getArea(){
+        return Math.pow(width, 2) + 2 * width * Math.sqrt( (Math.pow(width, 2) / 4) * Math.pow(height, 2));
+    }
+
+    public double getVolume(){
+        return Math.pow(width, 2) * (height / 3);
+    }
+}
+
+
+public class TriangularPrism extends Shape3D   {
+
+    private double length;
+    private double height;
+    private double width;
+
+    // solving as right triangle as base triangle
+    public TriangularPrism(double length, double width, double height) {
+        this.length = length;
+        this.height = height;
+        this.width = width;
+    }
+
+    public double getArea(){
+        return (length * width) + (height * length) + (height * width) + (height * Math.sqrt(length * length + width * width));
+    }
+
+    public double getVolume(){
+        return (length * width / 2) * height;
+    }
+
+}
